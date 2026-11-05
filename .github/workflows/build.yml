@@ -6,11 +6,15 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
+    timeout-minutes: 20
 
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+
+    - name: Set up Homebrew Path
+      run: echo "/opt/homebrew/bin" >> $GITHUB_PATH
 
     - name: Install XcodeGen
       run: brew install xcodegen
